@@ -1,0 +1,288 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and general layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: whitesmoke;
+    padding-top: 70px; /* Ensure content is not hidden behind fixed navbar */
+}
+
+/* Section Styles */
+section {
+    padding: 50px;
+}
+
+/* Home Section */
+#home {
+    background-color: white;
+    height: 100vh;
+    text-align: center;
+    color: black;
+}
+/* Home Section */
+#about {
+    background-color: rgb(202, 202, 202);
+    height: 35vh;
+    text-align: center;
+}
+/* Home Section */
+#contact {
+    background-color: #f3f3f3;
+    height: 20vh;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+/* Game Overview Section */
+#game-overview {
+    background-color: #f5f5f5;
+    padding: 50px;
+    position: relative;
+}
+
+/* Container for flex layout */
+#game-overview .overview-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Image Styling */
+#game-overview .overview-image {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.42, 0, 0.58, 1); /* Adding cubic-bezier rotation effect here */
+}
+
+#game-overview .overview-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Text Section */
+#game-overview .overview-text {
+    position: relative;
+    flex: 1;
+    max-width: 600px;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 12px;
+    z-index: 2;
+    text-align: center;
+    /* No rotation effect on text anymore */
+}
+
+#game-overview .overview-text h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#game-overview .overview-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Add slight rotation effect to images on hover for desktop and larger screens only */
+@media (min-width: 768px) {
+    #game-overview .overview-container:hover .overview-image {
+        transform: rotate(5deg); /* Slight rotation */
+    }
+}
+
+/* Mobile Navigation Bar and Hamburger */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    
+    top: 0;
+    left: 0;
+
+    z-index: 10;
+
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-delay: 0.1s;
+}
+
+.navbar .logo {
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.navbar .hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+}
+
+/* Mobile Hamburger - 2x2 Grid Layout */
+@media (max-width: 768px) {
+    /* Show hamburger on mobile */
+    .navbar .hamburger {
+        display: flex;
+    }
+
+    /* Hide regular links on mobile */
+    .navbar .nav-links {
+        display: none;
+    }
+
+    .navbar .hamburger.active + .nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2x2 grid for buttons */
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #333;
+        padding: 20px;
+        width: 100%;
+    }
+
+    /* Mobile-specific navbar adjustments */
+    #game-overview .overview-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    #game-overview .overview-image {
+        margin-bottom: 15px;
+    }
+
+    #game-overview .overview-text {
+        padding-left: 0;
+        /* Fix mobile text misalignment when rotated */
+        transform-origin: center center; /* Ensures the text stays in place */
+    }
+}
+
+
+
+/* Navbar Styles */
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: flex-start; /* Align everything to the left */
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* Logo */
+.navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px; /* Adds space between logo and nav buttons */
+}
+
+/* Navigation Links (buttons) */
+.navbar .nav-links {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+}
+
+/* Navigation Links List Item */
+.navbar .nav-links li {
+    position: relative;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .nav-links a:hover {
+    color: #ff4081;
+}
+
+/* Hamburger Menu (Visible on mobile) */
+.navbar .hamburger {
+    display: none; /* Hidden by default */
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    margin-left: auto; /* Push hamburger to the right */
+}
+
+/* Mobile Menu - Show/Hide on Toggle */
+.navbar .nav-links.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+
+/* Media Query for Mobile (Hamburger menu) */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none; /* Hide links on small screens */
+    }
+
+    .navbar .hamburger {
+        display: block; /* Show hamburger on small screens */
+    }
+
+    .navbar .nav-links.active {
+        display: flex; /* Show the menu when hamburger is clicked */
+    }
+}
+
